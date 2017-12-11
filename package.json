@@ -1,0 +1,29 @@
+{
+  "name": "webglgame",
+  "version": "1.0.0",
+  "description": "WebGL Game made with ThreeJS for learning purpose",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/everardohd/everardohd.github.io.git"
+  },
+  "keywords": [
+    "game",
+    "webgl",
+    "threejs",
+    "javascript"
+  ],
+  "author": "Everardo Hernandez D.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/everardohd/everardohd.github.io/issues"
+  },
+  "homepage": "https://github.com/everardohd/everardohd.github.io#readme",
+  "devDependencies": {
+    "browser-sync": "^2.18.13",
+    "gulp": "^3.9.1"
+  }
+}

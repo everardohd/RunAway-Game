@@ -1,0 +1,155 @@
+canvas {
+    display: block;
+}
+
+#in-game-play {
+    width: 60%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    display: none;
+}
+
+:root {
+    --placeholder-color: black;
+}
+
+body {
+    background-color: black;
+    overflow: hidden;
+}
+
+.fullscreen-bg {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: -100;
+}
+
+.fullscreen-bg__video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: auto;
+    height: auto;
+    min-width: 100%;
+    min-height: 100%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+@media (max-width: 767px) {
+    .fullscreen-bg {
+        background: url('Zombie.png') center center / cover no-repeat;
+    }
+
+    .fullscreen-bg__video {
+        display: none;
+    }
+}
+
+.other {
+    display: none;
+}
+
+.input_container.center {
+    width: 40%;
+}
+
+img.img_levels {
+    width: 50%;
+}
+
+h1 {
+    display: none;
+    font-size: 68px;
+    color: #ddd;
+}
+
+#minimapa {
+    position: absolute;
+    z-index: 2;
+    left: 100%;
+    top: 0%;
+    transform: translate(-110%, 10%);
+    image-rendering: pixelated;
+    width: 200px;
+}
+
+#HUD {
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    top: 2%;
+    transform: translate(-50%, 0%);
+    image-rendering: pixelated;
+    width: 30vw;
+}
+
+#health_border, #health_img {
+    position: absolute;    
+    width: 100%;
+    height: 100px;
+    box-sizing: border-box;
+}
+
+#config img {
+    position: absolute;    
+    top: 100%;
+    width: 120px;
+    transform: translate(10%, -110%);
+}
+
+#sound, #mute {
+    width: 50px;
+    position: relative;
+    margin: 10px;
+}
+
+#sound {
+    width: 40px;
+}
+
+#sound-box, #config {
+    display: none;
+}
+
+.instructions {
+    color: #ccc;
+    font-size: 24px;
+}
+
+#win, #lose, #gameover {
+    width: 50vw;
+    display: none;
+}
+
+#gameover {
+    z-index: 5;
+}
+
+#next, #levels {
+    width: 50vw;
+}
+
+#instructions {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    transform: translate(0%, -50%);
+}
+
+#nameHTML {
+    color: #ddd;
+    font-size: 36px;
+    margin-right: 36px;
+}

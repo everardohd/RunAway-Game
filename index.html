@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/png" href="/img/Zombie.png" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <title>Run Away</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="libs/flexboxgrid.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/game.css">
+</head>
+
+<body>
+    <div class="fullscreen-bg">
+        <video id="bgVideo" loop muted autoplay poster="img/Zombie.png" class="fullscreen-bg__video">
+            <source src="video/Moon.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div id="main_menu" class="row end-xs center">
+        <div class="col-xs">
+            <div>
+                <img id="instructions" src="img/Instructions.png" alt="Instructions">
+            </div>
+        </div>
+
+        <div class="col-xs">
+            <div>
+                &nbsp;
+            </div>
+        </div>
+        <div class="col-xs center-xs">
+            <div class="box play_box">
+                <input type="text" placeholder="Name">
+            </div>
+
+            <div class="box play_box">
+                <img id="play_play" class="play_button img_buttons" src="img/Play.png" alt="Play">
+            </div>
+
+            <div class="box play_box">
+                <img id="how_to_play" class="img_buttons" src="img/HowToPlay.png" alt="Main enemy">
+            </div>
+
+        </div>
+    </div>
+
+    <div id="level_selection" class="container center hidden">
+        <div class="row end-xs">
+            <div class="col-xs">
+                <div id="nameHTML">Name</div>
+            </div>
+        </div>
+        <div class="row center-xs">
+            <div class="col-xs">
+                <h1>Level selection</h1>
+            </div>
+        </div>
+        <div class="row center-xs">
+            <div class="col-xs">
+                <img class="img_levels" onclick="PlayGame('1')" data-index="1" src="img/levels/level_1.png" alt="Level 1">
+            </div>
+            <div class="col-xs">
+                <img class="img_levels" onclick="PlayGame('2')" data-index="2" src="img/levels/level_2.png" alt="Level 2">
+            </div>
+            <div class="col-xs">
+                <img class="img_levels" onclick="PlayGame('3')" data-index="3" src="img/levels/level_3.png" alt="Level 3">
+            </div>
+        </div>
+        <div class="row center-xs">
+            <div class="col-xs">
+                <img class="img_levels" onclick="PlayGame('4')" data-index="4" src="img/levels/level_4.png" alt="Level 4">
+            </div>
+            <div class="col-xs">
+                <img class="img_levels" onclick="PlayGame('5')" data-index="5" src="img/levels/level_5.png" alt="Level 5">
+            </div>
+            <div class="col-xs">
+                <img class="img_levels" onclick="PlayGame('6')" data-index="6" src="img/levels/level_6.png" alt="Level 6">
+            </div>
+        </div>
+    </div>
+
+    <div id="menu_pause">
+        <img id="in-game-play" class="img_buttons" src="img/Play.png" alt="Play button">
+    </div>
+
+    <div id="HUD" class="hidden">
+        <img id="health_border" src="img/HUD/Health_Fill.png" alt="Play button">
+        <img id="health_img" src="img/HUD/Health.png" alt="Play button">
+        <img id="health_border" src="img/HUD/Health_Border.png" alt="Play button">
+    </div>
+    <audio id="background-music" loop>
+        <source src="sound/phantom-mansion.wav" type="audio/wav"> Your browser does not support the audio element.
+    </audio>
+
+    <div id="config">
+        <img src="img/Config.png" alt="Configuration button">
+    </div>
+
+    <div id="gameover" class="center">
+        <img id="win" src="img/win.png" alt="You lose message">
+        <img id="lose" src="img/lose.png" alt="You win message">
+        <img id="next" src="img/Next.png" alt="Next">
+        <img id="levels" src="img/Levels.png" alt="Levels">
+    </div>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span id="close" class="close">&times;</span>
+
+            <div class="row center-xs middle-xs">
+                <div id="mute-box" class="col-xs">
+                    <img id="mute" src="img/icons/mute-icon.png" alt="Stop music">
+                </div>
+                <div id="sound-box" class="col-xs">
+                    <img id="sound" src="img/icons/sound-icon.png" alt="Stop music">
+                </div>
+                <div id="volume-box" class="col-xs middle-xs">
+                    <input id="volume" type="range" min="0" max="100" value="50">
+                </div>
+            </div>
+            <div class="row center-xs middle-xs ingame hidden">
+                <div class="col-xs instructions">
+                    FPS Counter
+                </div>
+                <div class="col-xs">
+                    <input id="statscheck" type="checkbox" name="statscheck">
+                </div>
+            </div>
+            <div class="row center-xs middle-xs ingame hidden">
+                <div class="col-xs instructions">
+                    Minimap
+                </div>
+                <div class="col-xs">
+                    <input id="minimapcheck" type="checkbox" name="minimapcheck" checked="checked">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Libraries -->
+    <script src="libs/three.min.js"></script>
+    <script src="libs/stats.min.js"></script>
+    <script src="libs/EffectComposer.js"></script>
+    <script src="libs/CopyShader.js"></script>
+    <script src="libs/RenderPass.js"></script>
+    <script src="libs/ShaderPass.js"></script>
+    <!-- Shaders -->
+    <script src="shaders/SepiaShader.js"></script>
+    <script src="shaders/DamageShader.js"></script>
+    <!-- Utils -->
+    <script src="js/utils.js"></script>
+    <!-- Models -->
+    <script src="js/animation.js"></script>
+    <script src="js/camera.js"></script>
+    <script src="js/character.js"></script>
+    <script src="js/monster.js"></script>
+    <!-- Game logic -->
+    <script src="js/level.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/events.js"></script>
+</body>
+
+</html>
